@@ -8,7 +8,11 @@ const UserSchema = new mongoose.Schema({
     },
     name: String,
     password: String,
-    assignTeam: String
+    assignTeam: String,
+    cart: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Product"
+    }]
 })
 const ProductSchema = new mongoose.Schema({
     name: {
