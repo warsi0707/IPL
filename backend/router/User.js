@@ -32,8 +32,7 @@ uesrRouter.post("/register", async (req, res) => {
             assignTeam: iplTeam
         })
         return res.json({
-            message: "Signin Success",
-            NewUser: NewUser
+            message:`Signup Success, Weolcome to ${iplTeam} world`,
         })
     } catch (error) {
         res.status(404).json({
@@ -114,11 +113,15 @@ uesrRouter.get("/items/:itemId", authUser, async (req, res) => {
     const { itemId } = req.params;
     try {
         const findUser = await User.findById(id)
+        if(!findUser){
+            return res.status(404).json({
+                message: "Login required"
+            })
+        }
         findUser.cart.push(itemId)
         await findUser.save()
         return res.json({
-            message: "item added",
-            item: cartItem
+            message: "item added"
         })
     } catch (error) {
         res.status(404).json({
@@ -157,11 +160,14 @@ uesrRouter.get("/carts",authUser,async(req, res)=>{
         })
     }
 })
+uesrRouter.post("/buy",authUser,async(req, res)=>{
+    
+})
 //LOGOUT ROUTE
 uesrRouter.post("/logout",authUser, (req, res) => {
     res.clearCookie("token", USER_JWT_SECRETE)
     res.json({
-        message: "Log out success"
+        message: "Logout success"
     })
 })
 

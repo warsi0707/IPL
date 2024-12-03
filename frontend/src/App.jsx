@@ -7,15 +7,14 @@ import Detail from './components/Detail'
 import Footer from './components/Footer'
 import Signup from './components/Signup'
 import Signin from './components/Signin'
-import { UserAuthProvider } from './context/userAuthProvider'
+import { AuthProvider } from './context/AuthProvider'
+import Cart from './components/Cart'
 
 function App() {
-
-
   return (
     <>
     <Router>
-      <UserAuthProvider />
+      <AuthProvider>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
@@ -23,9 +22,11 @@ function App() {
         <Route path='/item/:id' element={<Detail/>}/>
         <Route path='/register' element={<Signup/>}/>
         <Route path='/signin' element={<Signin/>}/>
+        <Route path='/cart' element={<Cart/>}/>
       </Routes>
+      </AuthProvider>
       <Footer/>
-      {/* </UserAuthProvider> */}
+      
     </Router>
 
       
