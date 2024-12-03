@@ -40,7 +40,7 @@ export default function Signup() {
   return (
     <>
      <div className='h-screen'>
-     {message && <h1 className='text-xl bg-green-600 w-72 py-1 text-white rounded-xl my-5 mx-auto text-center '>{message}</h1>}
+     {message && (<h1 className='text-xl bg-green-600 w-72 py-1 text-white rounded-xl my-5 mx-auto text-center '>{message}</h1>)}
      {error && <h1 className='text-xl bg-red-600 w-72 py-1 text-white rounded-xl my-5 mx-auto text-center '>{error}</h1> }
     <div className='w-auto md:w-[600px] mx-auto my-10 bg-white rounded-2xl'>
         <h1 className='text-2xl text-center py-5'>Register </h1>
