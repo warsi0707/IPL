@@ -8,7 +8,7 @@ export default function Accessories() {
 
    const Products = async()=>{
       try{
-         const response = await fetch("http://localhost:3000/v1/api/product",{
+         const response = await fetch("https://ipl-be.onrender.com/v1/api/product",{
             method: "GET"
          })
          const result = await response.json()

@@ -8,7 +8,7 @@ export default function Cart() {
 
     const GetCart =async()=>{
         try{
-            const response = await fetch("http://localhost:3000/v1/api/user/carts",{
+            const response = await fetch("https://ipl-be.onrender.com/v1/api/user/carts",{
                 method: "GET",
                 credentials: "include"
             })
@@ -24,7 +24,7 @@ export default function Cart() {
     }
     const Deletitem =async(id)=>{
         try{
-            const response = await fetch(`http://localhost:3000/v1/api/user/item/${id}`,{
+            const response = await fetch(`https://ipl-be.onrender.com/v1/api/user/item/${id}`,{
                 method: "GET",
                 credentials: "include"
             })

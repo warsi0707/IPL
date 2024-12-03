@@ -5,7 +5,7 @@ export default function Cards() {
    const [data, setData] = useState([])
 
    const GetData =async()=>{
-      const response = await fetch("http://localhost:3000/v1/api/product/item",{
+      const response = await fetch("https://ipl-be.onrender.com/v1/api/product/item",{
          method: "GET",
       })
       const result = await response.json()

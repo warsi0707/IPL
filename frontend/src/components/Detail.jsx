@@ -12,7 +12,7 @@ export default function Detail() {
 
   const GetItem =async()=>{
     try{
-      const response = await fetch(`http://localhost:3000/v1/api/product/${id}`)
+      const response = await fetch(`https://ipl-be.onrender.com/v1/api/product/${id}`)
       const result = await response.json()
       setLoading(true)
       if(response.ok){
@@ -25,7 +25,7 @@ export default function Detail() {
   }
   const AddToCart =async()=>{
     try{
-      const response = await fetch(`http://localhost:3000/v1/api/user/items/${id}`,{
+      const response = await fetch(`https://ipl-be.onrender.com/v1/api/user/items/${id}`,{
         method: "GET",
         credentials: "include"
       })

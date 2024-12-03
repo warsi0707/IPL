@@ -8,10 +8,10 @@ export function AuthProvider({ children }) {
     useEffect(()=>{
         const checkAuth =async()=>{
             try{
-                const response = await fetch("http://localhost:3000/v1/api/user/auth",{
+                const response = await fetch("https://ipl-be.onrender.com/v1/api/user/auth",{
                     method: "GET",
                     credentials: "include"
-                })
+                })  
                 const result = await response.json()
                 if(result.authenticated === true){
                     setisAuthenticated(true)
