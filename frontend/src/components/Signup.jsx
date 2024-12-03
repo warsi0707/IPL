@@ -9,11 +9,11 @@ export default function Signup() {
   const [error, setError] = useState("")
   const navigate = useNavigate()
 
-  const Register =async()=>{
+  const Register =async(e)=>{
+    e.preventDefault()
     try{
       const response = await fetch("https://ipl-be.onrender.com/v1/api/user/register",{
-        method: "POST",
-        credentials:"include"
+        method: "POST"
       })
       const result = await response.json()
       if(response.ok){
