@@ -13,7 +13,7 @@ import Cart from './components/Cart'
 function App() {
   return (
     <>
-    <Router>
+    <HashRouter>
       <AuthProvider>
       <Navbar/>
       <Routes>
@@ -27,7 +27,7 @@ function App() {
       </AuthProvider>
       <Footer/>
       
-    </Router>
+    </HashRouter>
 
       
     </>

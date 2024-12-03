@@ -14,7 +14,6 @@ export default function Detail() {
     try{
       const response = await fetch(`http://localhost:3000/v1/api/product/${id}`)
       const result = await response.json()
-      console.log(result)
       setLoading(true)
       if(response.ok){
         setLoading(false)

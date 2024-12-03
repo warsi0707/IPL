@@ -9,7 +9,6 @@ export default function Cards() {
          method: "GET",
       })
       const result = await response.json()
-      console.log(result) 
       setLoading(true)
       if(response.ok){
          setData(result.products)

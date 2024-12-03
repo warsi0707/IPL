@@ -21,7 +21,6 @@ export default function Signin() {
         body:JSON.stringify({email, password})
       })
       const result = await response.json()
-      console.log(result)
       if(response.ok){
         setEmail("")
         setPassword("")

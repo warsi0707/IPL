@@ -13,12 +13,10 @@ export default function Cart() {
                 credentials: "include"
             })
             const result = await response.json()
-            console.log(result)
             setLoading(true)
             if(response.ok){
                 setData(result.item.cart)
                 setLoading(false)
-                console.log(data)
             }
         }catch(err){
             setError(err.message)

@@ -13,7 +13,6 @@ export default function Accessories() {
          })
          const result = await response.json()
          setLoading(true)
-         console.log(result)
          if(response.ok){
             setLoading(false)
             setData(result.products)
