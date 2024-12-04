@@ -13,10 +13,13 @@ export default function Cart() {
                 credentials: "include"
             })
             const result = await response.json()
+            console.log(result)
             setLoading(true)
             if(response.ok){
                 setData(result.item.cart)
                 setLoading(false)
+            }else{
+                setMessage(result.message)
             }
         }catch(err){
             setError(err.message)
@@ -36,7 +39,7 @@ export default function Cart() {
                 }, 2000);
             }
         }catch(err){
-            setError(err)
+            setError(err.message)
         }
     }
     useEffect(()=>{
@@ -45,6 +48,8 @@ export default function Cart() {
   return (
     <>
       <h1 className='text-3xl text-center py-5'>Cart</h1>
+      {message &&<h1 className='text-xl bg-green-600 w-72 py-1 text-white rounded-xl my-5 mx-auto text-center '>{message}</h1>}
+      {/* {error && <h1 className='text-xl bg-red-600 w-72 py-1 text-white rounded-xl my-5 mx-auto text-center '>{error}</h1> } */}
       <div className="main flex flex-col gap-10 lg:flex-row md:gap-10 mb-20">
        <div className=" w-full flex flex-col gap-5 px-5">
         {data.map((items) =>(
@@ -59,9 +64,12 @@ export default function Cart() {
         </div>
         ))}
        </div>
+       {data.length ===0? "":<>
         <div className="price bg-gray-100 h-96 w-full ">
             <button className='bg-purple-500 px-7 text-white text-2xl rounded-xl hover:bg-purple-800 py-3 flex mx-auto mt-40'>Check Out</button>
         </div>
+       </>}
+        
       </div>
     </>
   )

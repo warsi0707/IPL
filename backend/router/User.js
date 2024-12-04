@@ -149,21 +149,22 @@ uesrRouter.get("/item/:itemId", authUser, async (req, res) => {
 //CART ALL ITEM ROUTE
 uesrRouter.get("/carts",authUser,async(req, res)=>{
     const { id } =req.user;
-    try{
+    // try{
         const cart = await User.findById(id).populate("cart")
-        if(cart.length === 0 ){
-            return res.json({
+
+        if(cart.cart.length === 0 ){
+            return res.status(404).json({
                 message: "Empty Cart"
             })
         }
         return res.json({
-            item: findUser
+            item: cart
         })
-    }catch(error){
-        res.status(404).json({
-            message: error.message
-        })
-    }
+    // }catch(error){
+    //     res.status(404).json({
+    //         message: error.message
+    //     })
+    // }
 })
 uesrRouter.post("/buy",authUser,async(req, res)=>{
     
