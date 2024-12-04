@@ -13,9 +13,15 @@ export default function Signup() {
     e.preventDefault()
     try{
       const response = await fetch("https://ipl-be.onrender.com/v1/api/user/register",{
-        method: "POST"
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({email, name, password})
       })
       const result = await response.json()
+      console.log(result)
       if(response.ok){
         setMessage(result.message)
         setEmail("")

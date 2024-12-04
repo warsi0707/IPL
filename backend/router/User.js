@@ -17,7 +17,7 @@ uesrRouter.post("/register", async (req, res) => {
                 message: "All Input required"
             })
         }
-        const ExistUser = await User.findOne({ email: email }); //finding existing user in db
+        const ExistUser = await User.findOne({email: email}); //finding existing user in db
         if (ExistUser) {
             return res.status(404).json({
                 message: "User already exist"
