@@ -171,7 +171,12 @@ uesrRouter.post("/buy",authUser,async(req, res)=>{
 })
 //LOGOUT ROUTE
 uesrRouter.post("/logout",authUser, (req, res) => {
-    res.clearCookie("token", USER_JWT_SECRETE)
+    res.clearCookie("token", {
+        httpOnly: true,
+        sameSite: process.env.NODE_ENV==="Development"?"lax":"none",
+        secure:process.env.NODE_ENV==="Development"?false:true,
+    })
+    
     res.json({
         message: "Logout success"
     })
