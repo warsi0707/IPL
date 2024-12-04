@@ -57,7 +57,7 @@ export default function Signup() {
                 <form onSubmit={Register} >
                 <input value={email} onChange={(e)=> setEmail(e.target.value)}  type="text" className='w-full p-3.5  hover:rounded-lg border-2 ' placeholder='Email' />
                 <input value={name} onChange={(e)=> setName(e.target.value)}   type="text" className='w-full p-3.5  hover:rounded-lg border-2 ' placeholder='Name' />
-                <input value={password} onChange={(e)=> setPassword(e.target.value)}  type="text" className='w-full p-3.5 rounded-b-lg hover:rounded-lg border-2 ' placeholder='Password' />
+                <input value={password} onChange={(e)=> setPassword(e.target.value)}  type="password" className='w-full p-3.5 rounded-b-lg hover:rounded-lg border-2 ' placeholder='Password' />
                 <h1 className='py-3'>Already an account,   <a href="/signin" className='underline'>Login</a></h1>
                 <button type='submit' className='bg-red-600 text-xl text-white w-full p-3 my-2 rounded-xl hover:bg-red-700'>Register</button>
                 </form>

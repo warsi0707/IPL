@@ -150,7 +150,12 @@ uesrRouter.get("/item/:itemId", authUser, async (req, res) => {
 uesrRouter.get("/carts",authUser,async(req, res)=>{
     const { id } =req.user;
     try{
-        const findUser = await User.findById(id).populate("cart")
+        const cart = await User.findById(id).populate("cart")
+        if(cart.length === 0 ){
+            return res.json({
+                message: "Empty Cart"
+            })
+        }
         return res.json({
             item: findUser
         })
