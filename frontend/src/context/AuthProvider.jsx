@@ -1,14 +1,17 @@
-import React, { createContext, useEffect, useState } from 'react'
+import  { createContext, useEffect } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
+import { userAuthAtom, usernameAtom } from '../atoms/Atoms'
+import { BackendUrl } from '../Provider'
 const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
-    const [isAuthenticated, setisAuthenticated] = useState(false)
-    const [username, setusername] = useState("")
-
+    const [isAuthenticated, setisAuthenticated] = useRecoilState(userAuthAtom)
+    const username = useRecoilValue(usernameAtom)
+    const backendUrl = BackendUrl
     useEffect(()=>{
         const checkAuth =async()=>{
             try{
-                const response = await fetch("https://ipl-be.onrender.com/v1/api/user/auth",{
+                const response = await fetch(`${backendUrl}/v1/api/user/auth`,{
                     method: "GET",
                     credentials: "include"
                 })  

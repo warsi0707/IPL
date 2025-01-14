@@ -2,21 +2,18 @@ const { Router } = require("express")
 const uesrRouter = Router()
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const { User } = require("../Databse/DB")
+const { User } = require("../Schema/DB")
 const { USER_JWT_SECRETE } = require("../config")
 const { authUser } = require("../middleware/UserAuth")
+const InputValidation = require("../middleware/InputValidation")
+const { Signup, Signin } = require("../Schema/InputSchema")
 
 const TEAM = ["RCB", "KKR", "DC", "PBKS", "SRH", "RR", "LSG", "MI"]
 //REGISTER ROUTE
-uesrRouter.post("/register", async (req, res) => {
+uesrRouter.post("/register",InputValidation(Signup), async (req, res) => {
     const { email, name, password } = req.body;
 
     try {
-        if (!email || !name || !password) { //custom input validation
-            return res.status(404).json({
-                message: "All Input required"
-            })
-        }
         const ExistUser = await User.findOne({email: email}); //finding existing user in db
         if (ExistUser) {
             return res.status(404).json({
@@ -40,19 +37,11 @@ uesrRouter.post("/register", async (req, res) => {
         })
     }
 
-
-
-
 })
 //SIGNIN ROUTE
-uesrRouter.post("/signin", async (req, res) => {
+uesrRouter.post("/signin",InputValidation(Signin), async (req, res) => {
     const { email, password } = req.body;
     try {
-        if (!email || !password) {
-            return res.status(404).json({
-                message: "*All Input required"
-            })
-        }
         const user = await User.findOne({ email })
         if (!user) {
             return res.status(404).json({

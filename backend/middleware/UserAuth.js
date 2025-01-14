@@ -6,7 +6,7 @@ function authUser(req, res, next) {
     try {
         if (!token) {
             return res.status(404).json({
-                message: "Not authenticated"
+                message: "Login required!"
             })
         }
         const decode = jwt.verify(token, USER_JWT_SECRETE) //verifying token and user secret

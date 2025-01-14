@@ -1,5 +1,5 @@
 const Router = require("express")
-const { Product, User } = require("../Databse/DB")
+const { Product, User } = require("../Schema/DB")
 const { authUser } = require("../middleware/UserAuth")
 const productRouter = Router()
 

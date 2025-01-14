@@ -6,19 +6,21 @@ const cookieParser = require("cookie-parser")
 const { productRouter } = require('./router/Product')
 const cors = require("cors")
 const app = express()
+const path = require("path")
+
 
 app.use(cookieParser())
 app.use(express.json())
+app.use(express.static(path.join(__dirname, "frontend", "dist")))
 app.use(cors({
-    // origin: "http://localhost:5173",
-    origin: "https://ipl-8gdn.onrender.com",
+    origin: process.env.FRONTEND_URL,
     credentials: true
 }))
-
 app.use("/v1/api/user",uesrRouter)
 app.use("/v1/api/product", productRouter)
-
-
+app.get("*",(req, res) =>{
+    res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"))
+})
 const Main =async()=>{
     try{
         await mongoose.connect(process.env.MONGO_URL)
