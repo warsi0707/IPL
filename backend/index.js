@@ -11,11 +11,14 @@ const path = require("path")
 
 app.use(cookieParser())
 app.use(express.json())
-app.use(express.static(path.join(__dirname, "frontend", "dist")))
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true
 }))
+app.use(express.static(path.join(__dirname, "frontend", "dist")))
+app.get("/",(req, res)=>{
+    res.send("Hello world")
+})
 app.use("/v1/api/user",uesrRouter)
 app.use("/v1/api/product", productRouter)
 app.get("*",(req, res) =>{
