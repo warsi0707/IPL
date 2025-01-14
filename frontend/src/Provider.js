@@ -1,2 +1,2 @@
 // export const BackendUrl = "http://localhost:3000"
-export const BackendUrl =process.env.BackendUrl
+export const BackendUrl ="https://ipl-be.onrender.com"
